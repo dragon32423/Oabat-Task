@@ -1,0 +1,27 @@
+$colorPrimaryWhite: #fff;
+$colorPrimaryBlack: #222;
+$gradientPrimary: linear-gradient(59deg, #2baee8, #d679c7);
+
+$colorGrey1: #555;
+$colorGrey2: #777;
+$colorGrey3: #999;
+$colorGrey4: #f0f0f0;
+
+$gradientAccent: linear-gradient(59deg, #3bdbb6, #2baee8);
+$gradientSlider: linear-gradient(207deg, #3bdbb6, #2baee8);
+$blueAccent1: #3b54ab;
+$blueAccent2: #0ba1db;
+$blueAccent3: #2baee8;
+$greenAccent: #38dbb6;
+$pinkAccent: #d679c7;
+$likeRed: #ed2f2f;
+
+$colorLink: $colorGrey3;
+
+$colorAccents: (
+  '1': $blueAccent1,
+  '2': $blueAccent2,
+  '3': $blueAccent3,
+  '4': $greenAccent,
+  '5': $pinkAccent,
+);

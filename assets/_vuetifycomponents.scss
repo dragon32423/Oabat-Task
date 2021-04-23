@@ -1,0 +1,273 @@
+@import '@/assets/_variables';
+@import '@/assets/_shadows';
+
+.v-card {
+  .card-logo--absolute {
+    top: -60px;
+    left: 20px;
+    position: absolute;
+  }
+
+  &.contentOverflow {
+    overflow: visible;
+
+    .card-content {
+      top: -40px;
+      position: relative;
+      background-color: white;
+      border-top-left-radius: 30px !important;
+      border-top-right-radius: 30px !important;
+      border-bottom-left-radius: 40px !important;
+      border-bottom-right-radius: 40px !important;
+    }
+  }
+
+  .card-info {
+    &.fixed {
+      bottom: 0;
+      position: fixed;
+      height: 76px;
+      background-color: #fff;
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  border-bottom-left-radius: 40px !important;
+  border-bottom-right-radius: 40px !important;
+
+  @include box-shadow-2;
+}
+
+.v-stepper__step__step {
+  &.oabat {
+    background: #d679c7;
+    background: -webkit-linear-gradient(180deg, #d679c7, #0ba1db);
+    background: linear-gradient(180deg, #d679c7, #0ba1db);
+    color: #fff !important;
+  }
+}
+
+.v-tab {
+  text-transform: none !important;
+}
+
+#business-tab-switcher {
+  overflow-y: hidden;
+  padding-bottom: 10px;
+
+  .v-tabs__wrapper {
+    border-radius: 0 0 20px 20px !important;
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+
+    .v-tabs__div {
+      text-transform: none !important;
+    }
+  }
+
+  .v-tabs__slider {
+    height: 3px;
+    background-image: $gradientPrimary;
+  }
+}
+
+.v-tour .v-step {
+  z-index: 5;
+  border-radius: 15px !important;
+  font-size: 16px !important;
+  background-image: linear-gradient(105deg, #d679c7, #2baee8) !important;
+
+  .v-step__button {
+    font-size: 16px;
+    border-radius: 15px;
+    padding: 5px 15px;
+  }
+}
+
+.v-btn {
+  border-radius: 28px !important;
+}
+
+.v-btn__content {
+  text-transform: none !important;
+  letter-spacing: -0.03em;
+}
+
+.v-btn--floating.v-btn--absolute {
+  z-index: 2 !important;
+}
+
+.v-date-picker-table {
+  height: auto !important;
+}
+
+.v-dialog {
+  &:not(.v-dialog--fullscreen) {
+    max-width: 443px;
+
+    .v-card {
+      border-radius: 30px !important;
+    }
+
+    border-radius: 40px !important;
+    border-top-left-radius: 30px !important;
+    border-top-right-radius: 30px !important;
+  }
+
+  .close-button.v-btn--right.v-btn--top {
+    top: 8px !important;
+    right: 8px !important;
+  }
+}
+
+.v-progress-linear {
+  @include box-shadow-2;
+  border-radius: 30px !important;
+
+  .v-progress-linear__background.primary {
+    background-color: $colorPrimaryWhite !important;
+  }
+
+  .v-progress-linear__determinate.primary {
+    background-image: $gradientSlider !important;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+  }
+}
+
+.v-slider {
+  .v-slider__thumb-container {
+    display: none;
+  }
+
+  .v-slider__track-container {
+    overflow: visible !important;
+    height: 1.4rem !important;
+    border-radius: 30px;
+
+    div {
+      &.oabat {
+        background: #ffffff !important;
+        border: 1px solid $colorGrey3;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+
+        + div {
+          background-image: $gradientSlider !important;
+          border-top-left-radius: 30px;
+          border-bottom-left-radius: 30px;
+          //border: none;
+        }
+      }
+    }
+  }
+}
+
+.v-progress-linear {
+  height: 18px !important;
+}
+
+.v-progress-linear {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+
+  .v-progress-linear__bar__determinate {
+    background-image: linear-gradient(-90deg, #00c391, #3394b2);
+  }
+}
+
+.v-list--dense .v-list__tile:not(.v-list__tile--avatar) {
+  height: 24px !important;
+}
+
+.v-list--dense {
+  .v-list-item__title {
+    font-size: 16px !important;
+  }
+}
+
+.v-list__tile__action {
+  min-width: 25px !important;
+}
+
+.v-btn:hover:before {
+  background-color: transparent !important;
+}
+
+.v-btn--top.v-btn--absolute.v-btn--small {
+  top: 0 !important;
+}
+
+.flex.offset-xs1 {
+  margin-left: 4.33333% !important;
+}
+
+.theme--light.v-text-field:not(.v-input--has-state)
+  > .v-input__control
+  > .v-input__slot:hover:before {
+  border-color: rgba(0, 0, 0, 0.42) !important;
+  border-image: linear-gradient(to left, #2baee8, #d679c7);
+  border-image-slice: 1;
+}
+
+.v-overlay--active:before {
+  opacity: 0.8 !important;
+}
+
+.v-toolbar {
+  box-shadow: none !important;
+
+  &.box-shadow-1 {
+    @include box-shadow-1;
+  }
+
+  &.box-shadow-2 {
+    @include box-shadow-2;
+  }
+
+  &.box-shadow-3 {
+    @include box-shadow-3;
+  }
+}
+
+.v-toolbar__content {
+  padding: 0 !important;
+}
+
+.v-chip {
+  margin-bottom: $spacer * 1 !important;
+  margin-right: $spacer * 1 !important;
+
+  @each $i in $colorAccents {
+    &.dynamic-accent-background-#{nth($i, 1)} {
+      border: 1px nth($i, 2) solid;
+
+      .text-body {
+        color: nth($i, 2);
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.v-card__title {
+  word-break: break-word !important;
+}
+
+.v-application {
+  p {
+    margin-bottom: 0 !important;
+  }
+
+  .primary--text {
+    color: $blueAccent1 !important;
+    caret-color: $blueAccent1 !important;
+  }
+}
