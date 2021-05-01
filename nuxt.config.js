@@ -17,6 +17,7 @@ export default {
     '@/assets/_typography',
     '@/assets/_shadows',
     '@/assets/_vuetifycomponents',
+    '@mdi/font/css/materialdesignicons.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

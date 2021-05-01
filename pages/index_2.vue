@@ -145,6 +145,10 @@ export default {
   text-align: center;
   font-family: europa, sans-serif !important;
 }
+.v-application,
+body {
+  font-family: europa, sans-serif !important;
+}
 
 .op_tag {
   margin-left: 30px;
@@ -159,6 +163,15 @@ export default {
   line-height: 1.5;
 }
 
+.swiper-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+}
 .sheet {
   margin: 0;
   padding: 0;

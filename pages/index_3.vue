@@ -1,4 +1,9 @@
 <template>
+  <!--  <v-sheet class="mx-auto" elevation="8" max-width="900">-->
+  <!--  <div id="outer">-->
+  <!--    <div id="inner">-->
+
+  <!--      <v-layout>-->
   <v-sheet class="mx-auto sheet elevation-0" elevation="8" max-width="2000">
     <div class="head-title">
       <h1 class="headline-md">
@@ -17,6 +22,8 @@
         :key="business.id"
         v-slot="{ active, toggle }"
       >
+        <!--          <v-layout align-center class="item">-->
+        <!--            <v-flex>-->
         <v-card
           :color="active ? undefined : 'white'"
           class="ma-1"
@@ -25,10 +32,11 @@
           @click="toggle"
         >
           <div class="fill">
-            <img :src="business.preview_image" alt="" />
+            <img :src="business.preview_image" />
           </div>
 
           <div>
+            <!--                  <div class="title format_bold">-->
             <div class="title">
               <span class="headline-sm">{{ business.title }}</span>
             </div>
@@ -50,33 +58,89 @@
             </v-card-text>
           </div>
         </v-card>
+        <!--            </v-flex>-->
+        <!--          </v-layout>-->
       </v-slide-item>
     </v-slide-group>
   </v-sheet>
+  <!--    </div>-->
+  <!--        </v-layout>-->
+  <!--  </div>-->
+
+  <!--  </v-sheet>-->
 </template>
 
 <script>
+// import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
+// import '@mdi/font'
+// import '@mdi/font/css/materialdesignicons.css'
+// eslint-disable-next-line no-unused-vars
 import { mapState } from 'vuex'
+// eslint-disable-next-line no-unused-vars
+import { getters } from '../store'
 
 export default {
   components: {},
   data: () => ({
     model: null,
+    st:
+      'Wir sind fit für die Herausforderungen von morgen und besitzen\n' +
+      '                die Expertise für die Durchführung anspruchsvoller Baumaßnahmen\n' +
+      '                und die Leidenschaft für die Entwicklung neuer intelligenter\n' +
+      '                Lösungen, die Zukunftshorizonte eröffnen. Mit Blick auf morgen\n' +
+      '                bauen und zuverlässig höchste Qualität von der Planung bis zur\n' +
+      '                Fertigstellung bieten: Das war die Leitidee unseres\n' +
+      '                Firmengründers Hans Berger im Jahr 1905. Aus dem Baugeschäft\n' +
+      '                Hans Berger hat sich die BERGER GRUPPE entwickelt, ein\n' +
+      '                familiengeführter, mittelständischer Unternehmensverbund der\n' +
+      '                Bau- und Baustoffindustrie mit zahlreichen Niederlassungen,\n' +
+      '                Tochter- und Beteiligungsgesellschaften im In- und Ausland und\n' +
+      '                mit dem Hauptsitz in Passau. Heute sind wir eine feste Größe in\n' +
+      '                der Bauindustrie.',
+    obs: null,
   }),
   computed: mapState({
+    // arrow functions can make the code very succinct!
     businesses: (state) => state.businesses,
+
+    // passing the string value 'count' is same as `state => state.count`
+    // countAlias: 'count',
+
+    // to access local state with `this`, a normal function must be used
+    // countPlusLocalState (state) {
+    //   return state.count + this.localCount
+    // }
   }),
   mounted() {
+    // console.log('0000: ', this.count[0].description)
+    // console.log('555: ', this.count[0])
+    // this.obs = this.businesses.slice()
+
+    // this.obs.forEach(truncate)
     this.$store.commit('TruncatedBusinesses', this.businesses)
     this.$store.commit('TruncatedTitles', this.businesses)
     this.$store.commit('TruncatedTags', this.businesses)
+    console.log('obs: ', this.businesses[0].description)
+    console.log('obs: ', this.businesses[1].description)
+    console.log('obs: ', this.businesses[2].description)
+
+    const maxLength = 130
+    this.st = this.st.substring(0, maxLength) + '...'
   },
+  // this.ob = await this.$store.getters.getBusinesses()
+  //   await console.log(this.count)
+  //   await console.log(this.ob)
+  // },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/_variables';
 @import '@/assets/_breakpoints';
+
+//.my-slider > .v-slide-group__next.theme--light.v-icon {
+//  color: rgb(234, 10, 10) !important;
+//}
 
 .welcome-card {
   background: $colorPrimaryWhite;
@@ -90,6 +154,7 @@ export default {
 .item {
   padding: 0;
   margin: 0;
+  //height: 500px;
 }
 
 .fill {
@@ -103,6 +168,7 @@ export default {
   min-width: 100%;
   min-height: 70%;
   max-height: 250px;
+  //max-width: 100px;
 }
 
 .title {
@@ -112,8 +178,22 @@ export default {
   margin-left: 20px;
   margin-top: 20px;
 }
+#inner {
+  display: table;
+  margin: 0 auto;
+}
+
+#outer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-family: europa, sans-serif;
+}
 .tags {
   width: 100%;
+  //text-align: left;
   margin-left: 20px;
   border-radius: 16px;
   font-size: 14px;
@@ -144,6 +224,13 @@ export default {
   position: relative;
   text-align: center;
   font-family: europa, sans-serif !important;
+
+  //display: inline-flex;
+  //height: 100%;
+}
+.v-application,
+body {
+  font-family: europa, sans-serif !important;
 }
 
 .op_tag {
@@ -159,13 +246,22 @@ export default {
   line-height: 1.5;
 }
 
+.swiper-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+}
 .sheet {
   margin: 0;
   padding: 0;
 }
 
 .head-title {
-  margin-left: 90px;
+  margin-left: 70px;
   margin-top: 20px;
 }
 </style>

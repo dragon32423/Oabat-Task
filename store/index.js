@@ -35,11 +35,67 @@ export const state = () => ({
       tags: ['Flugzeuge fliegen', 'Aero', 'Teamarbeit', 'International'],
       is_liked: false,
     },
+    {
+      id: 6,
+      logo: 'https://puu.sh/Hwyzr.png',
+      preview_image: 'https://puu.sh/HwyAl.png',
+      title: 'Airplanes Company',
+      description:
+        'Auf den unternehmerischen Grundfesten der FLUGZEUG GRUPPE, den gelebten Werten eines traditionell erfolgreichen Familienunternehmens, wächst unser Erfolg stetig und nachhaltig.',
+      tags: ['Flugzeuge fliegen', 'Aero', 'Teamarbeit', 'International'],
+      is_liked: false,
+    },
+    {
+      id: 7,
+      logo: 'https://puu.sh/Hwyzr.png',
+      preview_image: 'https://puu.sh/HwyAl.png',
+      title: 'Airplanes Company',
+      description:
+        'Auf den unternehmerischen Grundfesten der FLUGZEUG GRUPPE, den gelebten Werten eines traditionell erfolgreichen Familienunternehmens, wächst unser Erfolg stetig und nachhaltig.',
+      tags: ['Flugzeuge fliegen', 'Aero', 'Teamarbeit', 'International'],
+      is_liked: false,
+    },
   ],
 })
 
-export const getters = {}
+export const getters = {
+  getBusinesses: (state) => {
+    return state.businesses
+  },
+}
 
 export const actions = {}
 
-export const mutations = {}
+function truncate(ob, s, l) {
+  if (s === 'tags') {
+    if (l < ob[s][0].length) {
+      return (ob[s][0] = ob[s][0].substring(0, l) + '...')
+    } else {
+      return ob
+    }
+  } else if (l <= ob[s].length) {
+    return (ob[s] = ob[s].substring(0, l) + '...')
+  } else {
+    return ob
+  }
+}
+
+export const mutations = {
+  TruncatedBusinesses: (state) => {
+    return state.businesses.forEach(function (business) {
+      truncate(business, 'description', 130)
+    })
+  },
+
+  TruncatedTitles: (state) => {
+    return state.businesses.forEach(function (business) {
+      truncate(business, 'title', 21)
+    })
+  },
+
+  TruncatedTags: (state) => {
+    return state.businesses.forEach(function (business) {
+      truncate(business, 'tags', 11)
+    })
+  },
+}
