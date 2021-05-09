@@ -11,10 +11,10 @@
       <v-slide-item
         v-for="business in businesses"
         :key="business.id"
-        v-slot="{ active, toggle }"
+        v-slot="{ toggle }"
       >
         <v-card
-          :color="active ? 'grey' : 'white'"
+          :color="business.is_liked ? 'grey' : 'white'"
           class="ma-1"
           height="450"
           width="525"

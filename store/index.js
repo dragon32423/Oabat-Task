@@ -33,7 +33,7 @@ export const state = () => ({
       description:
         'Auf den unternehmerischen Grundfesten der FLUGZEUG GRUPPE, den gelebten Werten eines traditionell erfolgreichen Familienunternehmens, wächst unser Erfolg stetig und nachhaltig.',
       tags: ['Flugzeuge fliegen', 'Aero', 'Teamarbeit', 'International'],
-      is_liked: true,
+      is_liked: false,
     },
   ],
 })
