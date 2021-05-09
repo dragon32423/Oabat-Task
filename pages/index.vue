@@ -1,31 +1,45 @@
 <template>
-  <v-sheet class="mx-auto sheet elevation-0" elevation="8" max-width="2000">
+  <v-sheet
+    class="mx-auto sheet elevation-0 border"
+    elevation="8"
+    max-width="2000"
+  >
     <div class="head-title">
-      <h1 class="headline-md">
-        Einzigartige <b>Arbeitgeber</b> aus <b>Passau</b>
-      </h1>
+      <h1 class="headline-md">Einzigartige <b>[TYPE]</b> aus <b>[CITY]</b></h1>
     </div>
-    <v-slide-group
-      v-model="model"
-      class="pa-0"
-      active-class="success"
-      center-active
-      show-arrows
-    >
+    <v-slide-group v-model="model" class="pa-0 border" multiple show-arrows>
       <v-slide-item
         v-for="business in businesses"
         :key="business.id"
         v-slot="{ active, toggle }"
       >
         <v-card
-          :color="active ? undefined : 'white'"
+          :color="active ? 'grey' : 'white'"
           class="ma-1"
           height="450"
           width="525"
           @click="toggle"
         >
           <div class="fill">
+            <img
+              v-if="business.logo"
+              :src="business.logo"
+              class="logo"
+              alt=""
+            />
+            <img v-else src="../assets/oabat.jpg" class="logo" alt="" />
             <img :src="business.preview_image" alt="" />
+
+            <v-btn
+              class="mx-4 button"
+              fab
+              dark
+              large
+              color="white"
+              @click="like(business)"
+            >
+              <v-icon color="black" large> mdi-heart </v-icon>
+            </v-btn>
           </div>
 
           <div>
@@ -34,18 +48,18 @@
             </div>
             <div class="tags">
               <div class="block">
-                <v-card class="tag_card" height="25">
-                  <span>{{ business.tags[0] }}</span>
+                <v-card class="tag_card text-details" height="30" width="100">
+                  <p>{{ business.tags[0] }}</p>
                 </v-card>
               </div>
               <div v-if="business.tags.length > 1" class="block">
-                <span class="op_tag"
+                <span class="op_tag text-details"
                   >+{{ business.tags.length - 1 }} weitere</span
                 >
               </div>
             </div>
 
-            <v-card-text class="desc">
+            <v-card-text class="text-body desc">
               {{ business.description }}
             </v-card-text>
           </div>
@@ -61,7 +75,7 @@ import { mapState } from 'vuex'
 export default {
   components: {},
   data: () => ({
-    model: null,
+    model: [],
   }),
   computed: mapState({
     businesses: (state) => state.businesses,
@@ -70,6 +84,11 @@ export default {
     this.$store.commit('TruncatedBusinesses', this.businesses)
     this.$store.commit('TruncatedTitles', this.businesses)
     this.$store.commit('TruncatedTags', this.businesses)
+  },
+  methods: {
+    like(business) {
+      this.$store.commit('LikeBusiness', business.id)
+    },
   },
 }
 </script>
@@ -97,20 +116,22 @@ export default {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border-radius: 25px;
 }
 .fill img {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 70%;
-  max-height: 250px;
+  max-height: 220px;
+  border-radius: 25px;
 }
 
 .title {
-  width: 270px;
+  width: 470px;
   overflow: hidden;
   white-space: nowrap;
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 35px;
 }
 .tags {
   width: 100%;
@@ -134,15 +155,13 @@ export default {
   border-width: thin;
   display: block;
   max-width: 100%;
-  line-height: 20px;
-  outline: none;
-  text-decoration: none;
   transition-property: box-shadow, opacity;
   word-wrap: break-word;
   white-space: nowrap;
   color: rgba(0, 0, 0, 0.87);
   position: relative;
   text-align: center;
+  line-height: 24px;
   font-family: europa, sans-serif !important;
 }
 
@@ -167,5 +186,25 @@ export default {
 .head-title {
   margin-left: 90px;
   margin-top: 20px;
+}
+
+img.logo {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  margin-left: 15px;
+  border-radius: 25px;
+  top: 150px;
+  left: 0;
+  right: 0;
+  flex-shrink: 0;
+  min-width: 0;
+  min-height: 0;
+}
+
+.button {
+  position: absolute;
+  bottom: 200px;
+  right: 10px;
 }
 </style>

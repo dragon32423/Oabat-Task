@@ -33,36 +33,12 @@ export const state = () => ({
       description:
         'Auf den unternehmerischen Grundfesten der FLUGZEUG GRUPPE, den gelebten Werten eines traditionell erfolgreichen Familienunternehmens, wächst unser Erfolg stetig und nachhaltig.',
       tags: ['Flugzeuge fliegen', 'Aero', 'Teamarbeit', 'International'],
-      is_liked: false,
-    },
-    {
-      id: 6,
-      logo: 'https://puu.sh/Hwyzr.png',
-      preview_image: 'https://puu.sh/HwyAl.png',
-      title: 'Airplanes Company',
-      description:
-        'Auf den unternehmerischen Grundfesten der FLUGZEUG GRUPPE, den gelebten Werten eines traditionell erfolgreichen Familienunternehmens, wächst unser Erfolg stetig und nachhaltig.',
-      tags: ['Flugzeuge fliegen', 'Aero', 'Teamarbeit', 'International'],
-      is_liked: false,
-    },
-    {
-      id: 7,
-      logo: 'https://puu.sh/Hwyzr.png',
-      preview_image: 'https://puu.sh/HwyAl.png',
-      title: 'Airplanes Company',
-      description:
-        'Auf den unternehmerischen Grundfesten der FLUGZEUG GRUPPE, den gelebten Werten eines traditionell erfolgreichen Familienunternehmens, wächst unser Erfolg stetig und nachhaltig.',
-      tags: ['Flugzeuge fliegen', 'Aero', 'Teamarbeit', 'International'],
-      is_liked: false,
+      is_liked: true,
     },
   ],
 })
 
-export const getters = {
-  getBusinesses: (state) => {
-    return state.businesses
-  },
-}
+export const getters = {}
 
 export const actions = {}
 
@@ -83,13 +59,13 @@ function truncate(ob, s, l) {
 export const mutations = {
   TruncatedBusinesses: (state) => {
     return state.businesses.forEach(function (business) {
-      truncate(business, 'description', 130)
+      truncate(business, 'description', 180)
     })
   },
 
   TruncatedTitles: (state) => {
     return state.businesses.forEach(function (business) {
-      truncate(business, 'title', 21)
+      truncate(business, 'title', 40)
     })
   },
 
@@ -97,5 +73,9 @@ export const mutations = {
     return state.businesses.forEach(function (business) {
       truncate(business, 'tags', 11)
     })
+  },
+  LikeBusiness: (state, id) => {
+    const obj = state.businesses.find((x) => x.id === id)
+    obj.is_liked = !obj.is_liked
   },
 }

@@ -77,7 +77,7 @@
 // eslint-disable-next-line no-unused-vars
 import { mapState } from 'vuex'
 // eslint-disable-next-line no-unused-vars
-import { getters } from '../store'
+import { getters } from '../../store'
 
 export default {
   components: {},
