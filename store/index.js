@@ -1,3 +1,7 @@
+/**
+ * Vuex store is not used in the way that vuex is intended to be used generally.
+ * Also requirements from the taskdescription are not met.
+ */
 export const state = () => ({
   businesses: [
     {
@@ -38,10 +42,14 @@ export const state = () => ({
   ],
 })
 
+/** Missing getters - using getters was required in the tasks */
 export const getters = {}
 
+/** Missing actions - using actions was required in the tasks (e.g. to execute the mutations) */
 export const actions = {}
 
+/** Makes more sense to have the tuncation in the component itself and deliver the complete data */
+/** Bad variable naming */
 function truncate(ob, s, l) {
   if (s === 'tags') {
     if (l < ob[s][0].length) {
@@ -56,7 +64,10 @@ function truncate(ob, s, l) {
   }
 }
 
+/** CamelCase does not make sense for mutations */
+/** Bad naming convention - mutation is actively chaning -> e.g. truncateBusinesses() */
 export const mutations = {
+  /** */
   TruncatedBusinesses: (state) => {
     return state.businesses.forEach(function (business) {
       truncate(business, 'description', 180)
@@ -74,6 +85,7 @@ export const mutations = {
       truncate(business, 'tags', 11)
     })
   },
+
   LikeBusiness: (state, id) => {
     const obj = state.businesses.find((x) => x.id === id)
     obj.is_liked = !obj.is_liked
