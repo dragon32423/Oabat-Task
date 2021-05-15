@@ -69,6 +69,8 @@
 </template>
 
 <script>
+/** This page is a debgging leftover. Would be nice to properly clean up */
+
 // import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
 // import '@mdi/font'
 // import '@mdi/font/css/materialdesignicons.css'

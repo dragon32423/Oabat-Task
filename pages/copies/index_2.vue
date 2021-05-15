@@ -56,6 +56,7 @@
 </template>
 
 <script>
+/** This page is a debgging leftover. Would be nice to properly clean up */
 import { mapState } from 'vuex'
 
 export default {

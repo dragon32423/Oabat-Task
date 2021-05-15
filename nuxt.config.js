@@ -1,3 +1,4 @@
+/** Why is this here? */
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -28,6 +29,7 @@ export default {
 
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
 
+  /** Unused dependency "swiper" */
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios

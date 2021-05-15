@@ -1,10 +1,12 @@
 <template>
+  <!-- Missing task-description requirement to implement multiple (reusable) components for the List, Card and Logo -->
   <v-sheet
     class="mx-auto sheet elevation-0 border"
     elevation="8"
     max-width="2000"
   >
     <div class="head-title">
+      <!-- Brackets descriped possible properties (generally, a variable value) -->
       <h1 class="headline-md">Einzigartige <b>[TYPE]</b> aus <b>[CITY]</b></h1>
     </div>
     <v-slide-group v-model="model" class="pa-0 border" multiple show-arrows>
@@ -13,6 +15,7 @@
         :key="business.id"
         v-slot="{ toggle }"
       >
+      <!-- Task description: A like button that is toggled on click. | Not the card should be toggled --> 
         <v-card
           :color="business.is_liked ? 'grey' : 'white'"
           class="ma-1"
@@ -27,6 +30,8 @@
               class="logo"
               alt=""
             />
+            <!-- Relative imports can cause issues on chaning directories. Use "~/assets/oabat.jpg" -->
+            <!-- vuetify v-img for avoiding broken aspect ratios & lazy loading. No a11y & SEO tags -->  
             <img v-else src="../assets/oabat.jpg" class="logo" alt="" />
             <img :src="business.preview_image" alt="" />
 
@@ -48,6 +53,7 @@
             </div>
             <div class="tags">
               <div class="block">
+                <!-- Bad use of vuetify components - See V-Chip -->
                 <v-card class="tag_card text-details" height="30" width="100">
                   <p>{{ business.tags[0] }}</p>
                 </v-card>
@@ -77,9 +83,11 @@ export default {
   data: () => ({
     model: [],
   }),
+  /** A getter for getting data is recommended */
   computed: mapState({
     businesses: (state) => state.businesses,
   }),
+  /** Mutating in mounting the component does not make sense */
   mounted() {
     this.$store.commit('TruncatedBusinesses', this.businesses)
     this.$store.commit('TruncatedTitles', this.businesses)
@@ -94,9 +102,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/** Breaks completely on mobile */
 @import '@/assets/_variables';
 @import '@/assets/_breakpoints';
 
+/** Unused CSS */
 .welcome-card {
   background: $colorPrimaryWhite;
   height: 300px;
@@ -111,6 +121,8 @@ export default {
   margin: 0;
 }
 
+/** Use vuetify flex helper classes */
+/** Unclear class name - non-descriptive */
 .fill {
   display: flex;
   justify-content: center;
@@ -118,6 +130,7 @@ export default {
   overflow: hidden;
   border-radius: 25px;
 }
+/** Inverted Layering compared to mockup */
 .fill img {
   flex-shrink: 0;
   min-width: 100%;
@@ -133,6 +146,8 @@ export default {
   margin-left: 20px;
   margin-top: 35px;
 }
+
+
 .tags {
   width: 100%;
   margin-left: 20px;
@@ -151,6 +166,7 @@ export default {
   padding-left: 0;
   display: inline-block; // display inline with ability to provide width/height
 }
+
 .tag_card {
   border-width: thin;
   display: block;
@@ -188,6 +204,7 @@ export default {
   margin-top: 20px;
 }
 
+/** Wrong position from mockup, mixing up descriptions here */
 img.logo {
   height: 100px;
   width: 100px;
